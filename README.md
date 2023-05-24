@@ -1,2 +1,3 @@
 # InergFlask
-coding question provided as screening of interview
+coding question provided as screening of interview proces at inerg
+
