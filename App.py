@@ -27,7 +27,7 @@ annual_data.to_excel('annual.xls',engine='openpyxl')
 conn = sqlite3.connect('annual_DB.db')
 cursor = conn.cursor()
 
-# Create a table for the data
+
 cursor.execute('''CREATE TABLE IF NOT EXISTS annual_DB (
                     API_WELL_NUMBER TEXT,
                     oil INTEGER,
@@ -35,16 +35,16 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS annual_DB (
                     brine INTEGER
                   )''')
 
-# Read the annual data from the Excel file
+
 annual = pd.read_excel('annual.xls')
 
 annual_csv=pd.read_csv('annual_data.csv')
 
-# Insert the data into the table
+
 for row in annual_csv.itertuples(index=False):
     cursor.execute("INSERT INTO annual_DB (API_WELL_NUMBER, oil, gas, brine) VALUES (?,?,?,?)", row)
 
-# Commit the changes and close the connection
+
 conn.commit()
 conn.close()
 
